@@ -53,6 +53,7 @@ public class AndroidWirelessStatsCollector {
         statsCollectors = new HashSet<>();
         rxPermission = RealRxPermission.getInstance(activity.getApplicationContext());
 
+        //get position so we can log where we are encountering what devices
         GPSStatsCollector gpsStats = new GPSStatsCollector(activity.getApplicationContext());
         statsCollectors.add(gpsStats);
 
@@ -72,8 +73,8 @@ public class AndroidWirelessStatsCollector {
         InternetStatsCollector itStats = new InternetStatsCollector(activity.getApplicationContext());
         statsCollectors.add(itStats);
 
-        //logger to server
-        statsLogger = new StatsLogger();
+        //logger to disk and server
+        statsLogger = new StatsLogger(activity.getApplicationContext());
 
         //position stats
         if (!checkPlayServices(activity)) {
@@ -82,6 +83,8 @@ public class AndroidWirelessStatsCollector {
     }
 
     public void start() {
+        statsLogger.start();
+
         Log.i(TAG, "Checking permissions");
         permissionResults = new HashMap<>();
         compositeDisposable.add(rxPermission.requestEach(permissions)
@@ -94,7 +97,6 @@ public class AndroidWirelessStatsCollector {
                         startStats();
                     }
                 }));
-        statsLogger.start();
     }
 
     /**
