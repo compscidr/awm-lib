@@ -1,12 +1,12 @@
-package io.rightmesh.awm;
+package io.rightmesh.awm.stats;
 
 import java.util.HashSet;
 import java.util.Set;
 
 public abstract class NetworkStat {
 
+    String name;
     String mac;
-    GPSStats position;
     Set<String> macs = new HashSet<>();
 
     public int getSize() {
@@ -17,15 +17,9 @@ public abstract class NetworkStat {
         return mac;
     }
 
+    public String getName() { return name; }
+
     public Set<String> getMacs() {
         return macs;
-    }
-
-    public GPSStats getPosition() {
-        return position;
-    }
-
-    public void setPosition(GPSStats position) {
-        this.position = position;
     }
 }

@@ -1,4 +1,4 @@
-package io.rightmesh.awm;
+package io.rightmesh.awm.collectors;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -10,6 +10,8 @@ import android.util.Log;
 
 import java.util.List;
 
+import io.rightmesh.awm.stats.WiFiStats;
+
 public class WiFiAPStatsCollector extends StatsCollector {
 
     private static final String TAG = WiFiAPStatsCollector.class.getCanonicalName();
@@ -19,7 +21,7 @@ public class WiFiAPStatsCollector extends StatsCollector {
     private WifiManager.WifiLock wifiLock;
     private WiFiScanReceiver wiFiScanReceiver;
 
-    WiFiAPStatsCollector(Context context) {
+    public WiFiAPStatsCollector(Context context) {
         this.context = context;
 
         wifiManager = (WifiManager) context.getApplicationContext()
@@ -31,7 +33,7 @@ public class WiFiAPStatsCollector extends StatsCollector {
     }
 
     @Override
-    void start() throws Exception {
+    public void start() throws Exception {
         if(wifiLock != null) {
             wifiLock.acquire();
         }
@@ -42,7 +44,7 @@ public class WiFiAPStatsCollector extends StatsCollector {
     }
 
     @Override
-    void stop() {
+    public void stop() {
         if(wifiLock != null) {
             wifiLock.release();
         }

@@ -1,10 +1,10 @@
-package io.rightmesh.awm;
+package io.rightmesh.awm.stats;
 
 public class GPSStats {
     public double longitude;
     public double latitude;
 
-    GPSStats(double longitude, double latitude) {
+    public GPSStats(double longitude, double latitude) {
         this.longitude = longitude;
         this.latitude = latitude;
     }

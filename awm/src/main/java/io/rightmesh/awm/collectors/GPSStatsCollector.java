@@ -1,4 +1,4 @@
-package io.rightmesh.awm;
+package io.rightmesh.awm.collectors;
 
 import android.Manifest;
 import android.content.Context;
@@ -15,10 +15,13 @@ import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
 
+import io.rightmesh.awm.AndroidWirelessStatsCollector;
+import io.rightmesh.awm.stats.GPSStats;
+
 /**
  * https://stackoverflow.com/questions/28535703/best-way-to-get-user-gps-location-in-background-in-android
  */
-class GPSStatsCollector extends StatsCollector {
+public class GPSStatsCollector extends StatsCollector {
 
     private Context context;
     private static final String TAG = AndroidWirelessStatsCollector.class.getCanonicalName();
@@ -31,7 +34,7 @@ class GPSStatsCollector extends StatsCollector {
     private LocationSettingsRequest locationSettingsRequest;
     private LocationCallback locationCallback;
 
-    GPSStatsCollector(Context context) {
+    public GPSStatsCollector(Context context) {
 
         this.context = context;
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(context);
@@ -59,7 +62,7 @@ class GPSStatsCollector extends StatsCollector {
     }
 
     @Override
-    void start() throws Exception {
+    public void start() throws Exception {
         if(Build.VERSION.SDK_INT >= 23) {
             if (context.checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
                     && context.checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -72,7 +75,7 @@ class GPSStatsCollector extends StatsCollector {
     }
 
     @Override
-    void stop() {
+    public void stop() {
         mFusedLocationClient.removeLocationUpdates(locationCallback);
     }
 }

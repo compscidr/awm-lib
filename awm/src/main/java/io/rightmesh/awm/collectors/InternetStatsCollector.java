@@ -1,4 +1,4 @@
-package io.rightmesh.awm;
+package io.rightmesh.awm.collectors;
 
 import android.content.Context;
 
@@ -9,12 +9,12 @@ public class InternetStatsCollector extends StatsCollector {
     }
 
     @Override
-    void start() throws Exception {
+    public void start() throws Exception {
 
     }
 
     @Override
-    void stop() {
+    public void stop() {
 
     }
 }

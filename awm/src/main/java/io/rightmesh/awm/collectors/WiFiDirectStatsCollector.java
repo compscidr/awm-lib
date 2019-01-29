@@ -1,4 +1,4 @@
-package io.rightmesh.awm;
+package io.rightmesh.awm.collectors;
 
 import android.content.Context;
 import android.net.wifi.p2p.WifiP2pDevice;
@@ -25,7 +25,7 @@ public class WiFiDirectStatsCollector extends StatsCollector {
     }
 
     @Override
-    void start() throws Exception {
+    public void start() throws Exception {
         //can be null if the device doesn't support wifi p2p (or wifi direct)
         if (wifiDirectManager == null) {
             throw new Exception("Device doesn't support Wi-Fi Direct");
@@ -44,7 +44,7 @@ public class WiFiDirectStatsCollector extends StatsCollector {
     }
 
     @Override
-    void stop() {
+    public void stop() {
 
     }
 

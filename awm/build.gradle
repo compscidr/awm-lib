@@ -21,7 +21,7 @@ plugins {
 }
 
 group 'io.rightmesh'
-System.setProperty("snapshot","true")
+System.setProperty("snapshot","false")
 version '1.0.6' + (Boolean.valueOf(System.getProperty("snapshot")) ? "-SNAPSHOT" : "")
 
 android {

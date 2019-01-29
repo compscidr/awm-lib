@@ -1,4 +1,4 @@
-package io.rightmesh.awm;
+package io.rightmesh.awm.collectors;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.util.Log;
 
 import java.util.HashSet;
+
+import io.rightmesh.awm.stats.BluetoothStats;
 
 public class BluetoothStatsCollector extends StatsCollector {
 
@@ -28,7 +30,7 @@ public class BluetoothStatsCollector extends StatsCollector {
         ON, OFF, REJECTED
     }
 
-    BluetoothStatsCollector(Context context) {
+    public BluetoothStatsCollector(Context context) {
         this.context = context;
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         bluetoothBroadcastReceiver = new BluetoothBroadcastReceiver();

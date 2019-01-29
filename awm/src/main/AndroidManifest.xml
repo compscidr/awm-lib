@@ -16,7 +16,7 @@
 
     <application>
         <activity
-            android:name="io.rightmesh.awm.BluetoothStatsCollector$BluetoothEnableActivity"
+            android:name="io.rightmesh.awm.collectors.BluetoothStatsCollector$BluetoothEnableActivity"
             android:label="Enable Bluetooth"/>
         <meta-data
             android:name="com.google.android.gms.version"
